@@ -50,17 +50,6 @@ const listaContent = (imagem, nome, valor, secao) => {
     liProduto.append(imgProduto, nomeProduto, valorProduto, secaoProduto);
 }
 
-const calc = () => {
-    const innerText = [];
-    const total = document.querySelectorAll('ul li p').forEach((element) => {
-        innerText.push(element.innerText);
-    });
-    const removeLetras = innerText.join('').replaceAll('R$', '');
-    const result = removeLetras.split(' ').reduce((accumulator, current) => Number(accumulator) + Number(current));
-
-    return document.getElementById('precoTotal').innerText = `${result.toFixed(2)}`
-}
-
 const filtrarPorNome = (event) => {
     const procurar = document.querySelector('input').value;
 
@@ -115,6 +104,17 @@ const filtraPorSecao = () => {
     filtrarProdutos(produtos, 'hortifruti');
 }
 document.querySelector('.estiloGeralBotoes--filtrarHortifruti').addEventListener('click', filtraPorSecao);
+
+const calc = () => {
+    const innerText = [];
+    const total = document.querySelectorAll('ul li p').forEach((element) => {
+        innerText.push(element.innerText);
+    });
+    const removeLetras = innerText.join('').replaceAll('R$', '');
+    const result = removeLetras.split(' ').reduce((accumulator, current) => Number(accumulator) + Number(current));
+
+    return document.getElementById('precoTotal').innerText = `${result.toFixed(2)}`
+}
 
 const tela = () => {
     document.querySelector('ul').innerText = ''
